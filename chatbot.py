@@ -2,25 +2,19 @@
 Description: Chatbot application.  Allows user to perform balance 
 inquiries and make deposits to their accounts.
 Author: ACE Department
-Modified by: {Student Name}
+Modified by: Krish Malhotra
 Date: 2023-10-15
 Usage: From the console: python src/chatbot.py
 """
 
-# ACCOUNTS dictionary simulating account records
+# ACCOUNTS 
 ACCOUNTS = {
     123456: {"balance": 1000.0},
     112233: {"balance": 2000.0},
-    # More accounts can be added here
 }
 
 def get_account():
-    """Asks the user for an account number and checks
-
-    Returns:
-        int: The validated account number.
-
-    Raises:
+    """Asks the user for an account number and check
         ValueError: If the account number is not valid or does not exist.
     """
     account = input("Please enter your account number: ")
@@ -31,8 +25,7 @@ def get_account():
 
 def get_amount():
     """Ask the user for a deposit
-
-    Raises:
+        
         ValueError: If the amount is not positive or not numeric.
     """
     amount = input("Enter the transaction amount: ")
@@ -42,12 +35,12 @@ def get_amount():
     return amount
 
 def get_balance(account):
-    """Gets the balance of the account    """
+    """Gets the balance   """
     balance = ACCOUNTS[account]["balance"]
     return f"Your current balance for account {account} is ${balance:,.2f}."
 
 def make_deposit(account, amount):
-    """Deposits the specified amount into the account.    """
+    """Deposits the specified amount   """
     ACCOUNTS[account]["balance"] += amount
     return f"You have made a deposit of ${amount:,.2f} to account {account}."
 
@@ -74,7 +67,7 @@ def chatbot():
                 valid_account = False
                 while not valid_account:
                     try:
-                        # Call the get_account function here
+                        #get_account function 
                         account = get_account()
                         valid_account = True  # Account retrieved successfully
                     except ValueError as e:
@@ -86,7 +79,7 @@ def chatbot():
                     balance_message = get_balance(account)
                     print(balance_message)
 
-                else:  # User selected 'deposit'
+                else:  #deposit
                     # Amount validation.
                     valid_amount = False
                     while not valid_amount:
@@ -98,11 +91,11 @@ def chatbot():
                             # Invalid amount.
                             print(e)
 
-                    # Call the make_deposit function here
+                    #make_deposit function 
                     deposit_message = make_deposit(account, amount)
                     print(deposit_message)
             else:
-                # User selected 'exit'
+                #exit
                 keep_going = False
         except ValueError as e:
             # Invalid selection:

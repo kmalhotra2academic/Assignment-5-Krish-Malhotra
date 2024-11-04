@@ -1,8 +1,8 @@
 """
-Description:
-Author:
-Date:
-Usage:
+Description: Assignment 5
+Author: Krish Malhotra
+Date: October 29
+Usage: 
 """
 import unittest
 from unittest.mock import patch
@@ -68,24 +68,24 @@ class ChatbotTests(unittest.TestCase):
         self.assertEqual(ACCOUNTS[123456]["balance"], 1500.0)  # Check updated balance
 
     def test_make_deposit_account_does_not_exist(self):
-        """Test making a deposit to a non-existent account."""
+        """Test for deposit to a non-existent account."""
         with self.assertRaises(KeyError):
             make_deposit(999999, 500.0)
 
     def test_make_deposit_invalid_amount(self):
-        """Test making a deposit with an invalid amount."""
+        """Test for deposit with an invalid amount."""
         with self.assertRaises(ValueError) as context:
             make_deposit(123456, -50.0)
         self.assertEqual(str(context.exception), "Invalid amount. Please enter a positive number.")
 
     def test_user_selection_valid_lowercase(self):
-        """Test user selection with valid lowercase input."""
+        """Test for lowercase input."""
         with patch('builtins.input', return_value='balance'):
             selection = user_selection()
             self.assertEqual(selection, 'balance')
 
     def test_user_selection_valid_uppercase(self):
-        """Test user selection with valid uppercase input."""
+        """Test for uppercase input."""
         with patch('builtins.input', return_value='DEPOSIT'):
             selection = user_selection()
             self.assertEqual(selection, 'deposit')
